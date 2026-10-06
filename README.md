@@ -1,6 +1,17 @@
+---
+title: Ziad Scraper
+emoji: 🛒
+colorFrom: blue
+colorTo: purple
+sdk: docker
+app_port: 7860
+pinned: false
+---
+
 # ⚡ Turbo E-Commerce Scraper Pro | ساحب منتجات نون وأمازون الفائق
 
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/fadyhany0/scrip)
+
 
 أقوى وأسرع أداة متخصصة لسحب بيانات ومنتجات متجري **نون (Noon)** و **أمازون (Amazon)** بالكامل، ومصممة لسحب آلاف المنتجات مع استخراج كافة الصور بجودة Full HD ووضع **كل رابط صورة في خانة/عمود منفصل** في ملفات Excel و CSV.
 
