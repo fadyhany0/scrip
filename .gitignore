@@ -35,3 +35,5 @@ temp_*.html
 Thumbs.db
 .vscode/
 .idea/
+cloudflared.exe
+
