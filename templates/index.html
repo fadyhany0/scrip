@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noon Turbo Scraper Pro | ساحب منتجات نون الفائق</title>
+  <meta name="description" content="أسرع أداة لسحب 3000 منتج من متجر نون (Noon) بالكامل: الصور عالية الدقة، الوصف، الأسعار، المواصفات والتقييمات في دقائق معدودة!">
+  
+  <!-- Google Fonts: Cairo & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+  <!-- Background Ambient Lights -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+  <div class="ambient-glow glow-3"></div>
+
+  <!-- Header -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand">
+        <div class="brand-icon">
+          <span>⚡</span>
+        </div>
+        <div>
+          <h1 class="brand-title">NOON & AMAZON <span>TURBO</span> SCRAPER</h1>
+          <p class="brand-subtitle">ساحب منتجات نون وأمازون فائق السرعة • سحب 3000+ منتج مع جميع الصور</p>
+        </div>
+      </div>
+
+      <div class="header-controls">
+        <!-- Speed Badge -->
+        <div class="speed-indicator">
+          <span class="pulse-dot"></span>
+          <span>سرعة السحب: <strong>فائقة</strong> / ثانية</span>
+        </div>
+
+        <!-- Store Selector -->
+        <div class="control-group">
+          <label for="storeSelect">المتجر:</label>
+          <select id="storeSelect" class="custom-select">
+            <option value="auto" selected>⚡ كشف تلقائي (Auto)</option>
+            <option value="noon">🟡 نون (Noon)</option>
+            <option value="amazon">🟠 أمازون (Amazon)</option>
+          </select>
+        </div>
+
+        <!-- Country Selector -->
+        <div class="control-group">
+          <label for="countrySelect">الدولة:</label>
+          <select id="countrySelect" class="custom-select">
+            <option value="eg" selected>🇪🇬 مصر (Egypt)</option>
+            <option value="sa">🇸🇦 السعودية (KSA)</option>
+            <option value="ae">🇦🇪 الإمارات (UAE)</option>
+            <option value="us">🇺🇸 أمريكا (USA)</option>
+            <option value="kw">🇰🇼 الكويت (Kuwait)</option>
+            <option value="qa">🇶🇦 قطر (Qatar)</option>
+          </select>
+        </div>
+
+        <!-- Language Selector -->
+        <div class="control-group">
+          <label for="langSelect">اللغة:</label>
+          <select id="langSelect" class="custom-select">
+            <option value="en" selected>English (الإنجليزية)</option>
+            <option value="ar">العربية (Arabic)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-content">
+    
+    <!-- Hero / Intro Banner -->
+    <section class="hero-banner">
+      <div class="banner-badge">الإصدار الاحترافي 2.5 &bull; دعم كامل لـ نون (Noon) وأمازون (Amazon)</div>
+      <h2>اسحب آلاف المنتجات من نون وأمازون بكامل بياناتها في <span>دقائق معدودة</span></h2>
+      <p>احصل على الاسم، السعر الحالي والأصلي، الخصم، الوصف الشامل، المواصفات الفنية، وجميع الصور الأصلية بجودة Full HD مع خانة منفصلة لكل صورة في Excel و CSV وقاعدة بيانات SQLite.</p>
+    </section>
+
+    <!-- Navigation Tabs -->
+    <div class="tabs-nav">
+      <button class="tab-btn active" id="tabMassBtn" onclick="switchTab('mass')">
+        <span class="icon">🔥</span> السحب الضخم (3000 منتج)
+      </button>
+      <button class="tab-btn" id="tabSingleBtn" onclick="switchTab('single')">
+        <span class="icon">⚡</span> سحب منتج مفرد (Single)
+      </button>
+      <button class="tab-btn" id="tabBatchBtn" onclick="switchTab('batch')">
+        <span class="icon">🚀</span> سحب جماعي بروابط (Batch URLs)
+      </button>
+      <button class="tab-btn" id="tabSearchBtn" onclick="switchTab('search')">
+        <span class="icon">🔍</span> بحث واستخراج بالكلمة (Search)
+      </button>
+    </div>
+
+    <!-- Tab 0: Mass Scraper 3,000+ Products -->
+    <section id="massTabSection" class="tab-panel active">
+      <div class="glass-card" style="border-color: rgba(16, 185, 129, 0.4); box-shadow: 0 0 30px rgba(16, 185, 129, 0.15);">
+        <div class="card-header">
+          <h3>سحب ضخم حتى 3,000 منتج تلقائياً (Mass Catalog Scraper)</h3>
+          <span class="badge-neon">⚡ حفظ تلقائي في SQLite + Excel</span>
+        </div>
+
+        <div class="input-form">
+          <p class="hint-text">اختر عدد المنتجات المطلوب والأقسام، وسيتولى النظام سحب البيانات بالتوازي وحفظها فورياً دون فقدان أي بيانات:</p>
+          
+          <div class="batch-options" style="background: rgba(13, 18, 30, 0.6); padding: 16px; border-radius: var(--radius-md);">
+            <div class="option-item">
+              <label for="massStore">المتجر المطلوب:</label>
+              <select id="massStore" class="custom-select" style="font-weight: 700; color: #ff9900;">
+                <option value="noon" selected>🟡 نون (Noon Catalog)</option>
+                <option value="amazon">🟠 أمازون (Amazon Catalog & Search & Bestsellers)</option>
+              </select>
+            </div>
+
+            <div class="option-item">
+              <label for="massTargetCount">العدد المستهدف:</label>
+              <select id="massTargetCount" class="custom-select" style="font-weight: 700; color: var(--primary-accent);">
+                <option value="500">500 منتج (~30 ثانية)</option>
+                <option value="1000">1,000 منتج (~1 دقيقة)</option>
+                <option value="3000" selected>3,000 منتج (~2.5 دقيقة)</option>
+                <option value="5000">5,000 منتج (~4 دقائق)</option>
+              </select>
+            </div>
+
+            <div class="option-item">
+              <label for="massCategory">القسم / التصنيف:</label>
+              <select id="massCategory" class="custom-select">
+                <option value="all" selected>🌟 جميع الأقسام الرئيسية</option>
+                <option value="electronics-and-mobiles">📱 الإلكترونيات والموبايلات</option>
+                <option value="beauty-and-health">💄 الجمال والعطور والصحة</option>
+                <option value="home-and-kitchen">🏠 المنزل والمطبخ</option>
+                <option value="fashion">👕 الأزياء والموضة</option>
+                <option value="supermarket">🛒 السوبرماركت والأغذية</option>
+                <option value="sports-and-outdoors">⚽ الرياضة والألعاب الخارجية</option>
+              </select>
+            </div>
+
+            <div class="option-item">
+              <label for="massWorkers">سرعة المسارات (Threads):</label>
+              <select id="massWorkers" class="custom-select">
+                <option value="8">8 مسارات</option>
+                <option value="12" selected>12 مسار (موصى به - أقصى توازن)</option>
+                <option value="16">16 مسار (توربو خارق)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="input-wrapper">
+            <input type="text" id="massKeywords" placeholder="🔍 (اختياري لنون وأمازون) كلمات بحث مخصصة مفصولة بفاصلة مثل: dollhouses, iphone, laptop, perfume" />
+          </div>
+
+          <button id="startMassBtn" class="primary-btn glow-btn" onclick="startMassScrape()" style="padding: 16px 32px; font-size: 18px;">
+            <span class="btn-icon">🔥</span>
+            <span class="btn-text">بدء سحب المنتجات الآن</span>
+          </button>
+        </div>
+
+        <!-- Mass Scrape Live Status Box -->
+        <div id="massStatusBox" style="display: none; margin-top: 24px; padding: 20px; background: rgba(13, 18, 30, 0.85); border-radius: var(--radius-md); border: 1px solid rgba(16, 185, 129, 0.35);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <h4 id="massStatusTitle" style="color: #fff; font-size: 16px;">جاري تشغيل مهمة السحب...</h4>
+            <span id="massSpeedBadge" class="badge-neon">0 منتج / ثانية</span>
+          </div>
+
+          <div class="progress-bar-bg" style="height: 12px; margin-bottom: 14px;">
+            <div id="massBarFill" class="progress-bar-fill" style="width: 0%;"></div>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; font-size: 13px; color: var(--text-muted);">
+            <div>المسحوب والمحفوظ: <strong id="massSavedCount" style="color:#fff;">0</strong> من <strong id="massTotalCount" style="color:#fff;">3000</strong></div>
+            <div>الوقت المنقضي: <strong id="massElapsedTime" style="color:var(--secondary-accent);">0s</strong></div>
+          </div>
+
+          <!-- Download Action when completed -->
+          <div id="massDownloadActions" style="display: none; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--border-color); display: flex; gap: 12px; flex-wrap: wrap;">
+            <a id="massExcelLink" href="/api/mass/download/excel" class="export-btn btn-excel" style="text-decoration:none;">
+              📊 تحميل ملف Excel مع خانات الصور المنفصلة
+            </a>
+            <a id="massCsvLink" href="/api/mass/download/csv" class="export-btn btn-csv" style="text-decoration:none;">
+              📄 تحميل ملف CSV
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tab 1: Single Product -->
+    <section id="singleTabSection" class="tab-panel">
+      <div class="glass-card">
+        <div class="card-header">
+          <h3>سحب منتج بواسطة الرابط أو كود SKU / ASIN</h3>
+          <span class="badge-neon">سرعة قصوى ~0.4s &bull; نون وأمازون</span>
+        </div>
+        
+        <div class="input-form">
+          <div class="input-wrapper">
+            <input type="text" id="singleInput" placeholder="الصق رابط المنتج (نون أو أمازون) أو الكود (مثال: B0BDHWDR12 أو N50840187A أو رابط المنتج...)" />
+            <button class="paste-btn" type="button" onclick="pasteToInput('singleInput')" title="لصق من الحافظة">📋 لصق</button>
+          </div>
+
+          <div class="sample-pills">
+            <span>أمثلة سريعة للتجربة:</span>
+            <button type="button" class="sample-pill" onclick="setSingleTarget('https://www.amazon.eg/-/en/dp/B0BDHWDR12')">🎧 ايربودز برو (أمازون مصر)</button>
+            <button type="button" class="sample-pill" onclick="setSingleTarget('B0863TXGM3')">📦 سماعة سوني (ASIN أمازون)</button>
+            <button type="button" class="sample-pill" onclick="setSingleTarget('https://www.noon.com/egypt-en/apple-iphone-13-128gb-midnight-5g-with-facetime-middle-east-version/N50840187A/p/')">📱 آيفون 13 (نون مصر)</button>
+            <button type="button" class="sample-pill" onclick="setSingleTarget('N20985583A')">📞 نوكيا 106 (SKU نون)</button>
+          </div>
+
+          <button id="startSingleBtn" class="primary-btn glow-btn" onclick="startSingleScrape()">
+            <span class="btn-icon">⚡</span>
+            <span class="btn-text">بدء سحب المنتج فوراً</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tab 2: Batch Products -->
+    <section id="batchTabSection" class="tab-panel">
+      <div class="glass-card">
+        <div class="card-header">
+          <h3>سحب جماعي لمجموعة منتجات (Bulk URLs / SKUs / ASINs)</h3>
+          <span class="badge-neon">متعدد المسارات (Multi-threaded)</span>
+        </div>
+
+        <div class="input-form">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 8px;">
+            <p class="hint-text" style="margin: 0;">أدخل الروابط (سطر لكل منتج) - يدعم آلاف الروابط (حتى 50,000+ رابط):</p>
+            <label class="sample-pill" style="cursor: pointer; display: inline-flex; align-items: center; gap: 6px; background: rgba(59, 130, 246, 0.2); border-color: rgba(59, 130, 246, 0.5); color: #fff;">
+              📁 رفع ملف روابط (TXT / CSV / XLSX)
+              <input type="file" id="batchFileInput" accept=".txt,.csv,.xlsx,.xls" style="display: none;" onchange="handleBatchFileUpload(event)" />
+            </label>
+          </div>
+          <textarea id="batchInput" rows="7" placeholder="الصق الروابط هنا أو ارفع ملف نصي/إكسيل (حتى 50,000 رابط)...&#10;https://www.noon.com/...&#10;https://www.amazon.eg/dp/B0BDHWDR12&#10;N20985583A&#10;B0863TXGM3"></textarea>
+
+          <div class="batch-options">
+            <div class="option-item">
+              <label for="workersInput">عدد مسارات السحب المتزامنة (Threads):</label>
+              <select id="workersInput" class="custom-select">
+                <option value="10">10 مسارات</option>
+                <option value="15" selected>15 مسار (موصى به - أقصى توازن)</option>
+                <option value="20">20 مسار (توربو خارق للكميات الضخمة)</option>
+              </select>
+            </div>
+            <button type="button" class="sample-pill" onclick="loadBatchSamples()">📝 تحميل نموذج روابط للتجربة</button>
+            <div id="batchInputStats" style="font-size: 13px; color: var(--primary-accent); font-weight: 700;"></div>
+          </div>
+
+          <button id="startBatchBtn" class="primary-btn glow-btn" onclick="startBatchScrape()">
+            <span class="btn-icon">🚀</span>
+            <span class="btn-text">بدء السحب الجماعي بالتوازي</span>
+          </button>
+        </div>
+
+        <!-- Batch Scrape Live Status Box for Large Batches -->
+        <div id="batchStatusBox" style="display: none; margin-top: 24px; padding: 20px; background: rgba(13, 18, 30, 0.9); border-radius: var(--radius-md); border: 1px solid rgba(59, 130, 246, 0.45); box-shadow: 0 0 25px rgba(59, 130, 246, 0.15);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <h4 id="batchStatusTitle" style="color: #fff; font-size: 16px;">جاري تشغيل السحب الجماعي في الخلفية...</h4>
+            <div style="display: flex; gap: 8px; align-items: center;">
+              <span id="batchSpeedBadge" class="badge-neon" style="color: #60a5fa; border-color: rgba(96, 165, 250, 0.4);">0 /s</span>
+              <button id="batchStopBtn" class="clear-btn" style="padding: 4px 10px; font-size: 12px;" onclick="stopBatchScrape()">⏹️ إيقاف</button>
+            </div>
+          </div>
+
+          <div class="progress-bar-bg" style="height: 12px; margin-bottom: 14px;">
+            <div id="batchBarFill" class="progress-bar-fill" style="width: 0%; background: linear-gradient(90deg, #3b82f6, #60a5fa);"></div>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; font-size: 13px; color: var(--text-muted); flex-wrap: wrap; gap: 8px;">
+            <div>المسحوب والمحفوظ: <strong id="batchSavedCount" style="color:#fff;">0</strong> من <strong id="batchTotalCount" style="color:#fff;">0</strong></div>
+            <div>السرعة اللحظية: <strong id="batchSpeedText" style="color:#60a5fa;">0.0/s</strong></div>
+            <div>الوقت المتبقي المتوقع (ETA): <strong id="batchEtaText" style="color:var(--primary-accent);">حساب...</strong></div>
+            <div>الوقت المنقضي: <strong id="batchElapsedTime" style="color:var(--secondary-accent);">0s</strong></div>
+          </div>
+
+          <!-- Download Action for Batch -->
+          <div id="batchDownloadActions" style="margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--border-color); display: flex; gap: 12px; flex-wrap: wrap;">
+            <a id="batchExcelLink" href="/api/scrape/batch/download/excel" class="export-btn btn-excel" style="text-decoration:none;">
+              📊 تحميل ملف Excel (كل ما تم سحبه وحفظه)
+            </a>
+            <a id="batchCsvLink" href="/api/scrape/batch/download/csv" class="export-btn btn-csv" style="text-decoration:none;">
+              📄 تحميل ملف CSV
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tab 3: Search & Discover -->
+    <section id="searchTabSection" class="tab-panel">
+      <div class="glass-card">
+        <div class="card-header">
+          <h3>البحث والاستكشاف وسحب النتائج بالكامل</h3>
+          <span class="badge-neon">نون وأمازون</span>
+        </div>
+
+        <div class="input-form">
+          <p class="hint-text">ابحث عن أي كلمة وسيقوم النظام بسحب المنتجات مع صورها وأسعارها فوراً:</p>
+          <div class="search-bar">
+            <select id="searchStore" class="custom-select" style="max-width: 140px; font-weight:700;">
+              <option value="noon" selected>🟡 نون (Noon)</option>
+              <option value="amazon">🟠 أمازون (Amazon)</option>
+            </select>
+            <input type="text" id="searchInput" placeholder="اكتب كلمة البحث أو القسم (مثال: airpods, قهوة, electronics)..." />
+            <select id="searchLimitSelect" class="custom-select" style="max-width: 120px;">
+              <option value="12">12 منتج</option>
+              <option value="24" selected>24 منتج</option>
+              <option value="48">48 منتج</option>
+            </select>
+            <button id="startSearchBtn" class="primary-btn glow-btn" onclick="startSearch()">
+              <span class="btn-icon">🔍</span>
+              <span class="btn-text">بحث واستخراج</span>
+            </button>
+          </div>
+
+          <div class="sample-pills">
+            <span>كلمات مقترحة:</span>
+            <button type="button" class="sample-pill" onclick="setSearchQuery('iphone 15')">📱 iphone 15</button>
+            <button type="button" class="sample-pill" onclick="setSearchQuery('airpods')">🎧 airpods</button>
+            <button type="button" class="sample-pill" onclick="setSearchQuery('electronics')">💻 electronics (أمازون)</button>
+            <button type="button" class="sample-pill" onclick="setSearchQuery('kitchen')">🏠 kitchen (أمازون)</button>
+          </div>
+        </div>
+
+        <div id="searchHitsContainer" class="search-hits-wrapper" style="display: none;">
+          <div class="search-hits-header">
+            <h4>نتائج البحث (<span id="searchHitsCount">0</span> منتج وجدوا):</h4>
+            <button id="scrapeAllHitsBtn" class="secondary-btn" onclick="scrapeAllFoundHits()">
+              ⚡ سحب تفاصيل كل هذه النتائج دفعة واحدة
+            </button>
+          </div>
+          <div id="searchHitsGrid" class="search-hits-grid"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Loading Spinner & Live Progress Bar -->
+    <div id="progressContainer" class="progress-section" style="display: none;">
+      <div class="progress-card">
+        <div class="spinner-ring"></div>
+        <div class="progress-info">
+          <h4 id="progressStatusText">جاري السحب بسرعة فائقة...</h4>
+          <p id="progressDetailText">يتم الاتصال بخوادم نون واستخراج البيانات والصور عالية الدقة</p>
+          <div class="progress-bar-bg">
+            <div id="progressBarFill" class="progress-bar-fill" style="width: 15%;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live Stats Bar (Visible when products exist) -->
+    <section id="statsBar" class="stats-container" style="display: none;">
+      <div class="stat-card">
+        <div class="stat-icon">📦</div>
+        <div class="stat-info">
+          <div class="stat-value" id="statTotalProducts">0</div>
+          <div class="stat-label">منتج مسحوب بنجاح</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🖼️</div>
+        <div class="stat-info">
+          <div class="stat-value" id="statTotalImages">0</div>
+          <div class="stat-label">صورة Full HD مستخرجة</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">⚡</div>
+        <div class="stat-info">
+          <div class="stat-value" id="statAvgSpeed">0.42s</div>
+          <div class="stat-label">متوسط زمن السحب / منتج</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">💰</div>
+        <div class="stat-info">
+          <div class="stat-value" id="statTotalValue">0 EGP</div>
+          <div class="stat-label">إجمالي أسعار المنتجات</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Export Action Bar -->
+    <section id="exportBar" class="export-actions-bar" style="display: none;">
+      <div class="export-title">
+        <span>💾 تصدير وحفظ البيانات:</span>
+      </div>
+      <div class="export-buttons">
+        <button class="export-btn btn-excel" onclick="triggerExport('excel')">
+          <span class="icon">📊</span> تصدير Excel (.xlsx)
+        </button>
+        <button class="export-btn btn-csv" onclick="triggerExport('csv')">
+          <span class="icon">📄</span> تصدير CSV (عربي مرمز)
+        </button>
+        <button class="export-btn btn-json" onclick="triggerExport('json')">
+          <span class="icon">🗄️</span> تصدير JSON
+        </button>
+        <button class="export-btn btn-zip" onclick="triggerExport('images_zip')">
+          <span class="icon">🖼️</span> تحميل كل الصور ZIP
+        </button>
+        <button class="clear-btn" onclick="clearResults()">
+          <span class="icon">🗑️</span> مسح النتائج
+        </button>
+      </div>
+    </section>
+
+    <!-- Scraped Products Grid -->
+    <section id="resultsSection" class="results-container">
+      <div id="productsGrid" class="products-grid"></div>
+    </section>
+
+  </main>
+
+  <!-- Fullscreen Image Lightbox Modal -->
+  <div id="imageLightboxModal" class="lightbox-modal" onclick="closeLightbox(event)">
+    <div class="lightbox-content">
+      <button class="lightbox-close" onclick="closeLightbox(event)">&times;</button>
+      <img id="lightboxImg" src="" alt="Full HD Image" />
+      <div class="lightbox-footer">
+        <a id="lightboxDownloadBtn" href="" target="_blank" download class="secondary-btn">📥 تحميل هذه الصورة بدقة 1200px</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toastNotification" class="toast">
+    <span id="toastIcon">✓</span>
+    <span id="toastMessage">تمت العملية بنجاح</span>
+  </div>
+
+  <footer class="app-footer">
+    <p>Noon Turbo Scraper Pro &bull; سحب ضخم حتى 3,000+ منتج &bull; متوافق مع كافة متاجر نون</p>
+  </footer>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

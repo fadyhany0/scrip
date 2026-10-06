@@ -1,0 +1,37 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Environments
+venv/
+.venv/
+env/
+ENV/
+
+# Databases and large exported files
+exports/*.db
+exports/*.db-shm
+exports/*.db-wal
+exports/*.xlsx
+exports/*.csv
+exports/*.json
+exports/maskd_images/
+*.db
+*.db-shm
+*.db-wal
+
+# Temporary / Debug files
+debug_*.html
+temp_*.html
+*.log
+
+# Keep exports folder structure
+!exports/.gitkeep
+
+# OS generated
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
